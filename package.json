@@ -1,8 +1,8 @@
 {
   "name": "pal-assembly-highlighter",
-  "displayName": "pal-highlighter",
-  "description": "A simple syntax highlighter for the PDP-8 PAL Assembly Language.",
-  "version": "0.0.1",
+  "displayName": "PAL Assembly",
+  "description": "A simple syntax highlighter for the PDP-8's PAL Assembly Language.",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.74.0"
   },
