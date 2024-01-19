@@ -1,0 +1,149 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "PAL Assembly",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#memref-instructions"
+		},
+		{
+			"include": "#builtin-instructions"
+		},
+		{
+			"include": "#loc-set"
+		},
+		{
+			"include": "#consts"
+		},
+		{
+			"include": "#labels"
+		},
+		{
+			"include": "#definitions"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#characters"
+		}
+	],
+	"repository": {
+		"comments":{
+			"patterns": [{
+				"name": "comment.line",
+				"match": "\\/.*$"
+			}]
+		},
+
+		"consts":{
+			"patterns": [
+				{
+				"name": "constant.language",
+				"match": "[\\.|\\$]"
+			},
+			{
+				"name": "constant.language",
+				"match": "\\b(I|Z)\\b"
+			}
+		]
+		},
+
+		"memref-instructions": {
+			"patterns": [{
+				"name": "keyword.control",
+				"match": "\\b(AND|TAD|ISZ|DCA|JMS|JMP|OPR|IOT)\\b"
+			}]
+		},
+
+		"builtin-instructions": {
+			"patterns": [
+				{
+					"name": "support.function.iot.interrupt",
+					"match": "\\b(ION|IOF)\\b"
+				},
+				{
+					"name": "support.function.iot.tape_reader",
+					"match": "\\b(RSF|RRB|RFC)\\b"
+				},
+				{
+					"name": "support.function.iot.tape_punch",
+					"match": "\\b(PSF|PCF|PPC|PLS)\\b"
+				},
+				{
+					"name": "support.function.iot.keyboard",
+					"match": "\\b(KSF|KCC|KRS|KRB)\\b"
+				},
+				{
+					"name": "support.function.iot.printer",
+					"match": "\\b(TSF|TCF|TPC|TLS)\\b"
+				},
+				{
+					"name":"support.function.opr.group1",
+					"match": "\\b(NOP|IAC|RAL|RTL|RAR|RTR|CML|CMA|CIA|CLL|STL|CLA|GLK|STA)\\b"
+				},
+				{
+					"name":"support.function.opr.group2",
+					"match": "\\b(HLT|OSR|SKP|SNL|SZL|SZA|SNA|SMA|SPA|CLA|LAS)\\b"
+				}
+
+			]
+		},
+
+		"loc-set": {
+			"patterns": [{
+				"name": "keyword.other",
+				"match": "^\\s*\\*\\d*"
+			}]
+		},
+
+		"labels": {
+			"patterns": [{
+				"name": "variable.name",
+				"match": "^\\s*[a-zA-Z][a-zA-Z0-9]*,"
+			}]
+		},
+
+		"definitions": {
+			"patterns": [{
+				"name":"variable.name",
+				"match": "^\\s*[a-zA-Z][a-zA-Z0-9]*\\s*="
+			}]
+		},
+
+		"numbers": {
+			"patterns": [{
+				"name": "constant.numeric",
+				"match": "\\b\\d[\\daAbBcCdDeEfFxdo]*\\b"
+			}]
+		},
+		"characters" : {
+			"name": "string.quoted.single.pal",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.pal",
+					"match": "\\\\."
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.pal",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.pal",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.pa"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "pal-assembly-highlighter",
+  "displayName": "pal-highlighter",
+  "description": "A simple syntax highlighter for the PDP-8 PAL Assembly Language.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "pal",
+      "aliases": ["PAL Assembly", "pal"],
+      "extensions": [".pa", ".PA", ".pal", ".p8", ".pdp8",".s", ".S", ".asm"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "pal",
+      "scopeName": "source.pa",
+      "path": "./syntaxes/pal.tmLanguage.json"
+    }]
+  }
+}
